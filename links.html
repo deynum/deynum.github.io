@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Official Deynum Website</title>
+		<link rel="stylesheet" href="css/main.css">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+	</head>
+	
+	<body>
+		<center>
+			<section class="s_header">
+				<img id="logo_big" src="content/img/logo.png" />
+			</section>
+			<section class="s_header_buttons">
+				<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_home.png" onmousedown="link('index.html');"/>
+				<img class="s_header_button active" src="content/img/btn_links_active.png" />
+				<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_rules.png" onmousedown="link('rules.html');" />
+			</section>
+			<section class="s_body_margin">
+				<img class="s_header_button" onmouseover="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_youtube.png" onclick="window.open('https://usefulangle.com', '_blank');" />
+			</section>
+		</center>
+	</body>
+</html>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+function link(url) {
+	window.location.href = url;
+}
+
+function open(url) {
+	//var win = window.open(url, '_blank');
+	setTimeout(function() {
+		window.open('https://usefulangle.com', '_blank');
+	}, 2000);
+	//win.focus();
+}
+function hoverButton(get, bool) {
+	get.src = (bool ? get.src.split(".png")[0] + "_active.png" : get.src.split("_active.png")[0] + ".png");
+}
+</script>
