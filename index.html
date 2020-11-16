@@ -14,13 +14,16 @@
 			</section>
 			<section class="s_header_buttons">
 				<img class="s_header_button active" src="content/img/btn_home_active.png" />
-				<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_links.png" />
-				<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_faq.png" />
+				<!--<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_links.png" />
+				<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_faq.png" />-->
+				<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_rules.png" onmousedown="link('rules.html');" />
 			</section>
 			<section class="s_body_margin">
 				<div class="latest_video_wrapper">
 					<iframe class="latest-video" width="600" height="340" frameborder="0" allowfullscreen></iframe></br>
-					<img class="s_sub_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_subscribe.png" />
+					<!--<img class="s_sub_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_subscribe.png" />-->
+				</div>
+				<div id="small_video_wrapper">
 				</div>
 			</section>
 		</center>
@@ -29,21 +32,35 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript">
-function hoverButton(get, bool) {
-	if (bool) {
-		get.src = get.src.split(".png")[0] + "_active.png";
-	} else {
-		get.src = get.src.split("_active.png")[0] + ".png";
-	}
+function link(url) {
+	window.location.href = url;
 }
-</script>
+function hoverButton(get, bool) {
+	get.src = (bool ? get.src.split(".png")[0] + "_active.png" : get.src.split("_active.png")[0] + ".png");
+}
 
-<script>
+/**/
 var channelID = "UCliACYjYqDt7yqSXKo4f4fQ";
 var reqURL = "https://www.youtube.com/feeds/videos.xml?channel_id=";
 $.getJSON("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(reqURL)+channelID, function(data) {
 	var link = data.items[0].link;
 	var id = link.substr(link.indexOf("=")+1);
-	$(".latest-video").attr("src","https://youtube.com/embed/"+id + "?controls=0&showinfo=0&rel=0");
+	$(".latest-video").attr("src","https://youtube.com/embed/" + id + "?controls=0&showinfo=0&rel=0");
+	
+	var vids = data.items.length;
+	if (vids > 9) { vids = 9; }
+	
+	for (var i = 1; i < vids+1 ; i++) {
+		//console.log(data);
+		var vid = document.createElement("iframe");
+		var vidLink = data.items[i].link.substr(data.items[i].link.indexOf("=")+1)
+		vid.src = "https://youtube.com/embed/" + vidLink + "?controls=0&showinfo=0&rel=0";
+		vid.width = 295;
+		vid.height = 170;
+		vid.className = "video-border";
+		vid.style.margin = "5px";
+		document.getElementById("small_video_wrapper").appendChild(vid);
+	}
 });
+/**/
 </script>

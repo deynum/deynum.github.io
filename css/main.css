@@ -45,7 +45,7 @@ section.s_body_margin {
 	margin-top: 50px;
 }
 
-section.s_body_margin iframe.latest-video {
+section.s_body_margin iframe.latest-video, .video-border {
 	border: 3px solid #333333;
 }
 
@@ -69,4 +69,13 @@ section.s_body_margin img.s_sub_button.active {
 .latest_video_wrapper {
 	width: 600px;
 	text-align: right;
+}
+
+#small_video_wrapper {
+	display: inline-grid;
+	grid-template-columns: auto auto auto;
+	grid-template-rows: auto auto auto auto;
+	row-gap: 0px;
+	margin-top: 30px;
+	margin-bottom: 80px;
 }
