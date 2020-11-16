@@ -1,7 +1,6 @@
 body {
 	margin: 0px;
 	padding: 0px;
-	font-family: 'Montserrat', sans-serif;
 	background: #191919;
 }
 
@@ -78,4 +77,17 @@ section.s_body_margin img.s_sub_button.active {
 	row-gap: 0px;
 	margin-top: 30px;
 	margin-bottom: 80px;
+}
+
+.link_button {
+	height: 25px;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	margin: 20px;
+	display: block;
+	cursor: pointer;
+	background: #333333;
+	padding: 10px;
 }
