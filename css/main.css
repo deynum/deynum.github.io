@@ -1,0 +1,72 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Montserrat', sans-serif;
+	background: #191919;
+}
+
+section.s_header {
+	background: #333333;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	min-height: 104px;
+}
+
+section.s_header img#logo_big {
+	height: 100px;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+
+section.s_header_buttons {
+	margin-top: -15px;
+}
+
+section.s_header_buttons img.s_header_button {
+	display: inline-block;
+	vertical-align: middle;
+	height: 30px;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	margin: 30px;
+	margin-top: 0px;
+	cursor: pointer;
+}
+
+section.s_header_buttons img.s_header_button.active {
+	cursor: default;
+}
+
+section.s_body_margin { 
+	margin-top: 50px;
+}
+
+section.s_body_margin iframe.latest-video {
+	border: 3px solid #333333;
+}
+
+section.s_body_margin div.latest_video_wrapper img.s_sub_button {
+	display: inline-block;
+	vertical-align: middle;
+	height: 20px;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	margin-top: 10px;
+	margin-right: -4px;
+	cursor: pointer;
+}
+
+section.s_body_margin img.s_sub_button.active {
+	cursor: default;
+}
+
+.latest_video_wrapper {
+	width: 600px;
+	text-align: right;
+}

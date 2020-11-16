@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Official Deynum Website</title>
+		<link rel="stylesheet" href="css/main.css">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+	</head>
+	
+	<body>
+		<center>
+			<section class="s_header">
+				<img id="logo_big" src="content/img/logo.png" />
+			</section>
+			<section class="s_header_buttons">
+				<img class="s_header_button active" src="content/img/btn_home_active.png" />
+				<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_links.png" />
+				<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_faq.png" />
+			</section>
+			<section class="s_body_margin">
+				<div class="latest_video_wrapper">
+					<iframe class="latest-video" width="600" height="340" frameborder="0" allowfullscreen></iframe></br>
+					<img class="s_sub_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_subscribe.png" />
+				</div>
+			</section>
+		</center>
+	</body>
+</html>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+function hoverButton(get, bool) {
+	if (bool) {
+		get.src = get.src.split(".png")[0] + "_active.png";
+	} else {
+		get.src = get.src.split("_active.png")[0] + ".png";
+	}
+}
+</script>
+
+<script>
+var channelID = "UCliACYjYqDt7yqSXKo4f4fQ";
+var reqURL = "https://www.youtube.com/feeds/videos.xml?channel_id=";
+$.getJSON("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(reqURL)+channelID, function(data) {
+	var link = data.items[0].link;
+	var id = link.substr(link.indexOf("=")+1);
+	$(".latest-video").attr("src","https://youtube.com/embed/"+id + "?controls=0&showinfo=0&rel=0");
+});
+</script>
