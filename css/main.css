@@ -23,7 +23,7 @@ section.s_header_buttons {
 	margin-top: -15px;
 }
 
-section.s_header_buttons img.s_header_button {
+img.s_header_button {
 	display: inline-block;
 	vertical-align: middle;
 	height: 30px;
@@ -33,7 +33,21 @@ section.s_header_buttons img.s_header_button {
 	image-rendering: crisp-edges;
 	margin: 30px;
 	margin-top: 0px;
+	margin-bottom: 0px;
 	cursor: pointer;
+}
+
+img.s_header_text {
+	display: inline-block;
+	vertical-align: middle;
+	height: 25px;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	margin: 30px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 section.s_header_buttons img.s_header_button.active {
@@ -41,7 +55,7 @@ section.s_header_buttons img.s_header_button.active {
 }
 
 section.s_body_margin { 
-	margin-top: 50px;
+	margin-top: 100px;
 }
 
 section.s_body_margin #latest-video, .small-video {
@@ -102,6 +116,7 @@ section.s_body_margin img.s_sub_button.active {
 	grid-template-columns: auto auto auto;
 	grid-template-rows: auto auto auto auto;
 	row-gap: 0px;
+	column-gap: -1px;
 	margin-top: 50px;
 	margin-bottom: 80px;
 }
@@ -117,4 +132,63 @@ section.s_body_margin img.s_sub_button.active {
 	cursor: pointer;
 	background: #333333;
 	padding: 10px;
+}
+
+.meettheteam-wrapper {
+	margin-top: 20px;
+	margin-bottom: 80px;
+}
+
+.team-member {
+	border: 3px solid #333333;
+	display: inline-block;
+	margin: 5px;
+	width: 180px;
+	padding: 20px;
+}
+
+.team-member.owner {
+	border: 3px solid #30D2FF;
+}
+.team-member.mod {
+	border: 3px solid #CB73FF;
+}
+.team-member.trial-mod {
+	border: dashed 3px #CB73FF;
+}
+
+.team-member img.picture {
+	height: 80px;
+	width: 80px;
+	border-radius: 100%;
+	display: block;
+}
+.team-member img.name {
+	height: 20px;
+	display: block;
+	margin: 10px;
+	margin-top: 30px;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+
+.team-member-wrapper {
+	display: inline-grid;
+	grid-template-columns: auto auto auto auto;
+	grid-template-rows: auto auto auto auto auto auto auto auto;
+	row-gap: -1px;
+	column-gap: -1px;
+	margin-top: 30px;
+}
+
+.language {
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	height: 25px;
+	position: absolute;
+	margin-left: 10px;
 }
