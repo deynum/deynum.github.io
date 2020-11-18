@@ -1,14 +1,39 @@
+:root {
+  --dark-c-light: #39285e;
+  --dark-c-medium: #210530;
+  --dark-c-dark: #191919;
+  --dark-gradient: linear-gradient(0deg, var(--dark-c-medium) 0%, var(--dark-c-dark) 100%);
+}
+
 body {
 	margin: 0px;
 	padding: 0px;
 	background: #191919;
+	background: var(--dark-gradient);
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	min-height: 100vh;
+}
+
+::-moz-selection {
+	color: #ffffff;
+	background: rgba(203, 115, 255, .5);
+}
+
+::selection {
+	color: #ffffff;
+	background: rgba(203, 115, 255, .5);
 }
 
 section.s_header {
-	background: #333333;
+	background: var(--dark-c-light);
 	padding-top: 50px;
 	padding-bottom: 50px;
 	min-height: 104px;
+	box-shadow: 0px 0px 5px 0px rgba(57, 40, 94, .5);
 }
 
 section.s_header img#logo_big {
@@ -59,13 +84,14 @@ section.s_body_margin {
 }
 
 section.s_body_margin #latest-video, .small-video {
-	border: 3px solid #333333;
-	background: #333333;
+	border: 3px solid var(--dark-c-light);
+	background: var(--dark-c-light);
 }
 
 #latest-video {
 	height: 340px;
 	width: 600px;
+	box-shadow: 0px 0px 10px 1px rgba(57, 40, 94, .1);
 }
 
 .small-video.inactive {
@@ -93,6 +119,7 @@ section.s_body_margin #latest-video, .small-video {
 	width: 295px;
 	overflow: hidden;
 	transition: all 200ms ease;
+	box-shadow: 0px 0px 10px 1px rgba(57, 40, 94, .3);
 }
 
 section.s_body_margin div#latest_video_wrapper img.s_sub_button {
@@ -150,8 +177,9 @@ section.s_body_margin img.s_sub_button.active {
 	display: block;
 	cursor: default;
 	padding: 10px;
-	border: 3px solid #333333;
-	background: #333333;
+	border: 3px solid var(--dark-c-light);
+	background: var(--dark-c-light);
+	box-shadow: 0px 0px 10px 1px rgba(57, 40, 94, .3);
 }
 
 .meettheteam-wrapper {
@@ -164,16 +192,20 @@ section.s_body_margin img.s_sub_button.active {
 	display: inline-block;
 	width: 180px;
 	padding: 20px;
+	box-shadow: 0px 0px 10px 1px rgba(57, 40, 94, 1);
 }
 
 .team-member.owner {
 	border: 3px solid #30D2FF;
+	box-shadow: inset 0px 0px 10px 1px rgba(48, 210, 255, .2), 0px 0px 10px 1px rgba(48, 210, 255, .2);
 }
 .team-member.mod {
 	border: 3px solid #CB73FF;
+	box-shadow: inset 0px 0px 10px 1px rgba(203, 115, 255, .2), 0px 0px 10px 1px rgba(203, 115, 255, .2);
 }
 .team-member.trial-mod {
 	border: dashed 3px #CB73FF;
+	box-shadow: inset 0px 0px 10px 1px rgba(203, 115, 255, .2), 0px 0px 10px 1px rgba(203, 115, 255, .2);
 }
 
 .team-member img.picture {
@@ -210,4 +242,20 @@ section.s_body_margin img.s_sub_button.active {
 	height: 25px;
 	position: absolute;
 	margin-left: 10px;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--dark-c-medium);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--dark-c-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #ffffff;
 }
