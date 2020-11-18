@@ -30,7 +30,7 @@
 				<div id="latest_video_wrapper"></div>
 				<div id="small_video_wrapper"></div>
 				<div class="meettheteam-wrapper">
-					<img class="s_header_text" src="content/img/btn_meettheteam.png"/>
+					<img class="s_header_text" src="content/img/btn_meetthediscordteam.png"/>
 					</br></br>
 					<div class="team-member-wrapper">
 						<div class="team-member owner">
@@ -88,6 +88,7 @@ function loadSmallVideo(get, url) {
 	get.setAttribute('onclick', '');
 	get.className = "small-video active"
 	get.title = "";
+	get.removeChild(get.firstElementChild);
 	var vid = document.createElement("iframe");
 	vid.src = url;
 	vid.height = 166;
@@ -96,6 +97,7 @@ function loadSmallVideo(get, url) {
 	vid.setAttribute('scrolling', "no");
 	vid.setAttribute('allowfullscreen', "");
 	get.appendChild(vid);
+	vid.requestFullscreen();
 }
 
 /**/
@@ -130,11 +132,14 @@ $.getJSON("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(r
 		var vidLink = data.items[i].link.substr(data.items[i].link.indexOf("=")+1)
 		vid.setAttribute('onclick', "loadSmallVideo(this, 'https://youtube.com/embed/" + vidLink + "?controls=0&showinfo=0&rel=0')");
 		vid.className = "small-video inactive";
-		vid.style.background = 'url('+data.items[i].thumbnail+'), #333333';
-		vid.style.backgroundSize = "299px 222px";
-		vid.style.backgroundRepeat = "no-repeat";
-		vid.style.backgroundPosition = "center";
+		
+		var thumbnail = document.createElement("img");
+		thumbnail.src = data.items[i].thumbnail;
+		thumbnail.height = 226;
+		thumbnail.width = 295;
+		thumbnail.style.marginTop = "-30px";
 		vid.title = "Click to view the video";
+		vid.appendChild(thumbnail);
 		document.getElementById("small_video_wrapper").appendChild(vid);
 	}
 });
