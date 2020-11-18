@@ -2,7 +2,8 @@
 <html prefix="og: https://ogp.me/ns#">
 	<head>
 		<title>Official Deynum Website</title>
-		<link rel="stylesheet" href="css/main.css">
+		<link id="mainCss" rel="stylesheet" href="css/dark_simplified.css">
+		<link id="loadercss" rel="stylesheet" href="css/loader.css">
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
 		<meta property="og:type" content="website">
@@ -15,75 +16,85 @@
 	
 	<body>
 		<center>
-			<section class="s_header">
-				<img id="logo_big" src="content/img/logo.png" />
-			</section>
-			<section class="s_header_buttons">
-				<img class="s_header_button active" src="content/img/btn_home_active.png" />
-				<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_links.png" onmousedown="link('links');"/>
-				<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_rules.png" onmousedown="link('rules');"/>
-			</section>
-			<section class="s_body_margin">
-				<img class="s_header_text" src="content/img/watch_the_latest_video.png"/>
-				</br></br>
-				</br></br>
-				<div id="latest_video_wrapper"></div>
-				<div id="small_video_wrapper"></div>
-				<div class="meettheteam-wrapper">
-					<img class="s_header_text" src="content/img/btn_meetthediscordteam.png"/>
+			<div id="load-wrapper">
+				<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+			</div>
+			<div id="content">
+				<section class="s_header">
+					<img id="logo_big" src="content/img/logo.png" /></br>
+				</section>
+				<section class="s_header_buttons">
+					<img class="s_header_button active" src="content/img/btn_home_active.png" />
+					<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_links.png" onmousedown="link('links');"/>
+					<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_rules.png" onmousedown="link('rules');"/>
+				</section>
+				<!--<img class="s_header_button settings" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/cogwheel.png" onmousedown="settings();"/>-->
+				<section class="s_body_margin">
+					<img class="s_header_text" src="content/img/watch_the_latest_video.png"/>
 					</br></br>
-					<div class="team-member-wrapper">
-						<div class="team-member owner">
-							<img class="language" src="content/img/flag_dutch.png"/>
-							<img class="picture" src="content/img/team/deynum/picture.png"/>
-							<img class="name" src="content/img/team/deynum/name.png"/>
-						</div>
-						<div class="team-member mod">
-							<img class="language" src="content/img/flag_dutch.png"/>
-							<img class="picture" src="content/img/team/mex/picture.png"/>
-							<img class="name" src="content/img/team/mex/name.png"/>
-						</div>
-						<div class="team-member mod">
-							<img class="language" src="content/img/flag_british.png"/>
-							<img class="picture" src="content/img/team/eloqi/picture.png"/>
-							<img class="name" src="content/img/team/eloqi/name.png"/>
-						</div>
-						<div class="team-member mod">
-							<img class="language" src="content/img/flag_israeli.png"/>
-							<img class="picture" src="content/img/team/leshem/picture.png"/>
-							<img class="name" src="content/img/team/leshem/name.png"/>
-						</div>
-						<div class="team-member trial-mod">
-							<img class="language" src="content/img/flag_dutch.png"/>
-							<img class="picture" src="content/img/team/jeroen/picture.png"/>
-							<img class="name" src="content/img/team/jeroen/name.png"/>
-						</div>
-						<div class="team-member trial-mod">
-							<img class="language" src="content/img/flag_argentina.png"/>
-							<img class="picture" src="content/img/team/mbg/picture.png"/>
-							<img class="name" src="content/img/team/mbg/name.png"/>
-						</div>
-						<div class="team-member trial-mod">
-							<img class="language" src="content/img/flag_british.png"/>
-							<img class="picture" src="content/img/team/addikted/picture.png"/>
-							<img class="name" src="content/img/team/addikted/name.png"/>
+					</br></br>
+					<div id="latest_video_wrapper"></div>
+					<div id="small_video_wrapper"></div>
+					<div class="meettheteam-wrapper">
+						<img class="s_header_text" src="content/img/btn_meetthediscordteam.png"/>
+						</br></br>
+						<div class="team-member-wrapper">
+							<div class="team-member owner">
+								<img class="language" src="content/img/flag_dutch.png"/>
+								<img class="picture" src="content/img/team/deynum/picture.png"/>
+								<img class="name" src="content/img/team/deynum/name.png"/>
+							</div>
+							<div class="team-member mod">
+								<img class="language" src="content/img/flag_dutch.png"/>
+								<img class="picture" src="content/img/team/mex/picture.png"/>
+								<img class="name" src="content/img/team/mex/name.png"/>
+							</div>
+							<div class="team-member mod">
+								<img class="language" src="content/img/flag_british.png"/>
+								<img class="picture" src="content/img/team/eloqi/picture.png"/>
+								<img class="name" src="content/img/team/eloqi/name.png"/>
+							</div>
+							<div class="team-member mod">
+								<img class="language" src="content/img/flag_israeli.png"/>
+								<img class="picture" src="content/img/team/leshem/picture.png"/>
+								<img class="name" src="content/img/team/leshem/name.png"/>
+							</div>
+							<div class="team-member trial-mod">
+								<img class="language" src="content/img/flag_dutch.png"/>
+								<img class="picture" src="content/img/team/jeroen/picture.png"/>
+								<img class="name" src="content/img/team/jeroen/name.png"/>
+							</div>
+							<div class="team-member trial-mod">
+								<img class="language" src="content/img/flag_argentina.png"/>
+								<img class="picture" src="content/img/team/mbg/picture.png"/>
+								<img class="name" src="content/img/team/mbg/name.png"/>
+							</div>
+							<div class="team-member trial-mod">
+								<img class="language" src="content/img/flag_british.png"/>
+								<img class="picture" src="content/img/team/addikted/picture.png"/>
+								<img class="name" src="content/img/team/addikted/name.png"/>
+							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			</div>
 		</center>
 	</body>
 </html>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript">
+var baseloadtime = 400;
+
 function link(url) {
 	window.location.href = url;
 }
 function hoverButton(get, bool) {
 	get.src = (bool ? get.src.split(".png")[0] + "_active.png" : get.src.split("_active.png")[0] + ".png");
 }
-
+function settings() {
+	link('settings');
+}
 function loadSmallVideo(get, url) {
 	get.setAttribute('onclick', '');
 	get.className = "small-video active"
@@ -100,7 +111,6 @@ function loadSmallVideo(get, url) {
 	vid.requestFullscreen();
 }
 
-/**/
 var channelID = "UCliACYjYqDt7yqSXKo4f4fQ";
 var reqURL = "https://www.youtube.com/feeds/videos.xml?channel_id=";
 $.getJSON("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(reqURL)+channelID, function(data) {
@@ -110,10 +120,10 @@ $.getJSON("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(r
 	
 	var bigVid = document.createElement("div");
 	bigVid.id = "latest-video";
-	bigVid.style.background = 'url('+data.items[0].thumbnail+'), #333333';
+	/*bigVid.style.background = 'url('+data.items[0].thumbnail+'), #333333';
 	bigVid.style.backgroundSize = "600px 450px";
 	bigVid.style.backgroundRepeat = "no-repeat";
-	bigVid.style.backgroundPosition = "center";
+	bigVid.style.backgroundPosition = "center";*/
 	document.getElementById("latest_video_wrapper").appendChild(bigVid);
 	var bigVidFrame = document.createElement("iframe");
 	bigVidFrame.src = "https://youtube.com/embed/" + id + "?controls=0&showinfo=0&rel=0";
@@ -143,5 +153,36 @@ $.getJSON("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(r
 		document.getElementById("small_video_wrapper").appendChild(vid);
 	}
 });
-/**/
+
+window.onload = function() {
+	loadTheme();
+}
+function setTheme(theme) {
+	save("theme", theme);
+}
+function loadTheme() {
+	if (load("theme") != null) {
+		var theme = load("theme");
+	} else {
+		setTheme("dark_simplified");
+		var theme = load("theme");
+	}
+	
+	document.getElementById("mainCss").href = "css/" + load("theme") + ".css";
+}
+function save(type, value) {
+	window.localStorage.setItem(type, value);
+}
+function load(type) {
+	var value = window.localStorage.getItem(type);
+	return value;
+}
+
+setTimeout(function(){
+	setTimeout(function(){
+		document.getElementById('loadercss').href = "";
+		document.body.scrollTop = 0;
+	}, 100);
+	document.getElementById('content').style.display = "block";
+}, baseloadtime);
 </script>

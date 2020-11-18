@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<title>Official Deynum Website</title>
-		<link rel="stylesheet" href="css/main.css">
+		<link id="mainCss" rel="stylesheet" href="css/dark_simplified.css">
+		<link id="loadercss" rel="stylesheet" href="css/loader.css">
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
 		<meta property="og:type" content="website">
@@ -15,40 +16,48 @@
 	
 	<body>
 		<center>
-			<section class="s_header">
-				<img id="logo_big" src="content/img/logo.png" />
-			</section>
-			<section class="s_header_buttons">
-				<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_home.png" onmousedown="link('index');"/>
-				<img class="s_header_button active" src="content/img/btn_links_active.png" />
-				<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_rules.png" onmousedown="link('rules');" />
-			</section>
-			<section class="s_body_margin">
-				<div class="link_button_wrapper">
-					<div class="link_button">
-						<img onmouseover="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/buttons/youtube/main.png" onclick="openurl('https://www.youtube.com/channel/UCliACYjYqDt7yqSXKo4f4fQ');" title="Deynum Studio" />
+			<div id="load-wrapper">
+				<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+			</div>
+			<div id="content">
+				<section class="s_header">
+					<img id="logo_big" src="content/img/logo.png" />
+				</section>
+				<section class="s_header_buttons">
+					<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_home.png" onmousedown="link('index');"/>
+					<img class="s_header_button active" src="content/img/btn_links_active.png" />
+					<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_rules.png" onmousedown="link('rules');" />
+				</section>
+				<section class="s_body_margin">
+					<div class="link_button_wrapper">
+						<div class="link_button" onmouseenter="hoverLink(this, true);" onmouseleave="hoverLink(this, false);" onclick="openurl('https://www.youtube.com/channel/UCliACYjYqDt7yqSXKo4f4fQ');">
+							<img src="content/img/buttons/youtube/main.png" title="Deynum Studio" />
+						</div>
+						<div class="link_button" onmouseenter="hoverLink(this, true);" onmouseleave="hoverLink(this, false);" onclick="openurl('https://www.youtube.com/channel/UCrGCua5w8j9Kp_1SEGdKfLQ');">
+							<img src="content/img/buttons/youtube/game.png" title="Deynum Gaming" />
+						</div>
+						<div class="link_button" onmouseenter="hoverLink(this, true);" onmouseleave="hoverLink(this, false);" onclick="openurl('https://discord.gg/Xh7zUHjA7J');">
+							<img src="content/img/btn_discord.png" title="The Deynum Studio" />
+						</div>
+						<div class="link_button" onmouseenter="hoverLink(this, true);" onmouseleave="hoverLink(this, false);" onclick="openurl('https://www.twitch.tv/deynum');">
+							<img src="content/img/buttons/twitch/main.png" title="Deynum" />
+						</div>
+						<div class="link_button" onmouseenter="hoverLink(this, true);" onmouseleave="hoverLink(this, false);" onclick="openurl('https://deynum.itch.io/');">
+							<img src="content/img/buttons/itch.io/main.png" title="Deynum" />
+						</div>
+						<div class="link_button donate" onmouseenter="hoverLink(this, true);" onmouseleave="hoverLink(this, false);" onclick="openurl('https://deynum.itch.io/');">
+							<img src="content/img/buttons/donate/main.png" title="Deynum" />
+						</div>
 					</div>
-					<div class="link_button">
-						<img onmouseover="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/buttons/youtube/game.png" onclick="openurl('https://www.youtube.com/channel/UCrGCua5w8j9Kp_1SEGdKfLQ');" title="Deynum Gaming" />
-					</div>
-					<div class="link_button">
-						<img onmouseover="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_discord.png" onclick="openurl('https://discord.gg/Xh7zUHjA7J');" title="The Deynum Studio" />
-					</div>
-					<div class="link_button">
-						<img onmouseover="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/buttons/twitch/main.png" onclick="openurl('https://www.twitch.tv/deynum');" title="Deynum" />
-					</div>
-					<div class="link_button">
-						<img onmouseover="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/buttons/itch.io/main.png" onclick="openurl('https://deynum.itch.io/');" title="Deynum" />
-					</div>
-				</div>
-			</section>
+				</section>
+			</div>
 		</center>
 	</body>
 </html>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript">
-
+var baseloadtime = 400;
 
 function link(url) {
 	window.location.href = url;
@@ -59,4 +68,40 @@ function openurl(url) {
 function hoverButton(get, bool) {
 	get.src = (bool ? get.src.split(".png")[0] + "_active.png" : get.src.split("_active.png")[0] + ".png");
 }
+function hoverLink(get, bool) {
+	var child = get.firstElementChild;
+	child.src = (bool ? child.src.split(".png")[0] + "_active.png" : child.src.split("_active.png")[0] + ".png");
+}
+
+window.onload = function() {
+	loadTheme();
+}
+function setTheme(theme) {
+	save("theme", theme);
+}
+function loadTheme() {
+	if (load("theme") != null) {
+		var theme = load("theme");
+	} else {
+		setTheme("dark_simplified");
+		var theme = load("theme");
+	}
+	
+	document.getElementById("mainCss").href = "css/" + load("theme") + ".css";
+}
+function save(type, value) {
+	window.localStorage.setItem(type, value);
+}
+function load(type) {
+	var value = window.localStorage.getItem(type);
+	return value;
+}
+
+setTimeout(function(){
+	setTimeout(function(){
+		document.getElementById('loadercss').href = "";
+		document.body.scrollTop = 0;
+	}, 100);
+	document.getElementById('content').style.display = "block";
+}, baseloadtime);
 </script>

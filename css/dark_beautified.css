@@ -1,8 +1,8 @@
 :root {
-  --dark-c-light: #39285e;
-  --dark-c-medium: #210530;
-  --dark-c-dark: #191919;
-  --dark-gradient: linear-gradient(0deg, var(--dark-c-medium) 0%, var(--dark-c-dark) 100%);
+	--dark-c-light: #39285e;
+	--dark-c-medium: #210530;
+	--dark-c-dark: #191919;
+	--dark-gradient: linear-gradient(0deg, var(--dark-c-medium) 0%, var(--dark-c-dark) 100%);
 }
 
 body {
@@ -175,11 +175,56 @@ section.s_body_margin img.s_sub_button.active {
 	image-rendering: pixelated;
 	image-rendering: crisp-edges;
 	display: block;
-	cursor: default;
 	padding: 10px;
 	border: 3px solid var(--dark-c-light);
 	background: var(--dark-c-light);
 	box-shadow: 0px 0px 10px 1px rgba(57, 40, 94, .3);
+	cursor: pointer;
+}
+
+.theme_button_wrapper {
+	display: inline-grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto auto auto auto auto;
+	row-gap: 30px;
+	column-gap: 10px;
+	text-align: left;
+}
+
+.theme_button img {
+	height: 25px;
+	cursor: pointer;
+}
+
+.theme_header {
+	height: 25px;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	margin-bottom: 50px;
+}
+
+.theme_button {
+	height: 25px;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	display: block;
+	cursor: default;
+	border-radius: 1px;
+	cursor: pointer;
+}
+
+.theme_button.active {
+	cursor: default;
+}
+
+.link_button.donate {
+	border: 3px solid #30D2FF;
+	background: #30D2FF;
+	box-shadow: inset 0px 0px 10px 1px rgba(48, 210, 255, .2), 0px 0px 10px 1px rgba(48, 210, 255, .2);
 }
 
 .meettheteam-wrapper {
