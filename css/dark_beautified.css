@@ -182,6 +182,13 @@ section.s_body_margin img.s_sub_button.active {
 	cursor: pointer;
 }
 
+.link_button:hover, .link_button.donate:hover {
+	border: 3px solid #ffffff;
+	background: #ffffff;
+	box-shadow: inset 0px 0px 10px 1px rgba(255, 255, 255, .2), 0px 0px 10px 1px rgba(255, 255, 255, .2);
+}
+
+
 .theme_button_wrapper {
 	display: inline-grid;
 	grid-template-columns: auto;
