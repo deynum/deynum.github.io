@@ -62,6 +62,13 @@ img.s_header_button {
 	cursor: pointer;
 }
 
+img.s_header_button.settings {
+	height: 80px;
+	vertical-align: middle;
+	margin-top: -53px;
+	float: right;
+}
+
 img.s_header_text {
 	display: inline-block;
 	vertical-align: middle;
