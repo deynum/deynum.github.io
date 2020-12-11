@@ -12,6 +12,13 @@
 		<meta property="og:url" content="https://deynum.github.io/" />
 		<meta name="theme-color" content="#8A2CDC">
 		<link type="application/json+oembed" href="oembed.json"/>
+		<script src="js/snowstorm.js"></script>
+		<script>
+			snowStorm.flakesMaxActive = 1000;
+			snowStorm.followMouse = false;
+			snowStorm.freezeOnBlur = true;
+			snowStorm.snowCharacter = '•';
+		</script>
 	</head>
 	
 	<body>
@@ -29,6 +36,11 @@
 					<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_rules.png" onmousedown="link('rules');" />
 				</section>
 				<section class="s_body_margin">
+					<img class="theme_header" src="content/img/buttons/snow/snow.png" /></br>
+					<div class="theme_button_wrapper">
+						<img class="theme_button" id="toggle_snow" onmousedown="toggleSnow()" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/buttons/snow/toggle_on.png" />
+					</div>
+					</br>
 					<img class="theme_header" src="content/img/themes/theme.png" /></br>
 					<div class="theme_button_wrapper">
 						<img class="theme_button" id="theme_dark_simplified" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/themes/dark_simplified.png" />
@@ -58,6 +70,33 @@ function hoverButton(get, bool) {
 function hoverLink(get, bool) {
 	var child = get.firstElementChild;
 	child.src = (bool ? child.src.split(".png")[0] + "_active.png" : child.src.split("_active.png")[0] + ".png");
+}
+
+function loadSnow() {
+	if (load("snow-state") != null) {
+		if (load("snow-state") == "1") {
+			snowStorm.resume();
+			document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_off.png";
+		} else {
+			snowStorm.freeze();
+			document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_on.png";
+		}
+	} else {
+		save("snow-state", "0");
+		snowStorm.freeze();
+		document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_on.png";
+	}
+}
+
+function toggleSnow() {
+	if (load("snow-state") != null) {
+		save("snow-state", load("snow-state") == "0" ? "1" : "0");
+		window.location.reload();
+	} else {
+		save("snow-state", "0");
+		snowStorm.freeze();
+		document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_on.png";
+	}
 }
 
 function loadThemeButtons() {
@@ -103,6 +142,7 @@ function loadThemeButtons() {
 window.onload = function() {
 	loadTheme();
 	loadThemeButtons();
+	loadSnow();
 }
 function setTheme(theme) {
 	save("theme", theme);

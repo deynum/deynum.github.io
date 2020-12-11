@@ -12,6 +12,13 @@
 		<meta property="og:url" content="https://deynum.github.io/" />
 		<meta name="theme-color" content="#8A2CDC">
 		<link type="application/json+oembed" href="oembed.json"/>
+		<script src="js/snowstorm.js"></script>
+		<script>
+			snowStorm.flakesMaxActive = 1000;
+			snowStorm.followMouse = false;
+			snowStorm.freezeOnBlur = true;
+			snowStorm.snowCharacter = '•';
+		</script>
 	</head>
 	
 	<body>
@@ -156,7 +163,36 @@ $.getJSON("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(r
 
 window.onload = function() {
 	loadTheme();
+	loadSnow();
 }
+
+function loadSnow() {
+	if (load("snow-state") != null) {
+		if (load("snow-state") == "1") {
+			snowStorm.resume();
+			document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_off.png";
+		} else {
+			snowStorm.freeze();
+			document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_on.png";
+		}
+	} else {
+		save("snow-state", "0");
+		snowStorm.freeze();
+		document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_on.png";
+	}
+}
+
+function toggleSnow() {
+	if (load("snow-state") != null) {
+		save("snow-state", load("snow-state") == "0" ? "1" : "0");
+		window.location.reload();
+	} else {
+		save("snow-state", "0");
+		snowStorm.freeze();
+		document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_on.png";
+	}
+}
+
 function setTheme(theme) {
 	save("theme", theme);
 }
