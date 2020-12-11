@@ -120,6 +120,11 @@ var baseloadtime = 400;
 function link(url) {
 	window.location.href = url;
 }
+
+function settings() {
+	link('settings');
+}
+
 function hoverButton(get, bool) {
 	get.src = (bool ? get.src.split(".png")[0] + "_active" : get.src.split(".png")[0].split("_active")[0]) + ".png";
 }

@@ -73,6 +73,11 @@ function link(url) {
 function openurl(url) {
 	window.open(url);
 }
+
+function settings() {
+	link('settings');
+}
+
 function hoverButton(get, bool) {
 	get.src = (bool ? get.src.split(".png")[0] + "_active.png" : get.src.split("_active.png")[0] + ".png");
 }
