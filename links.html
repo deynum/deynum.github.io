@@ -90,15 +90,12 @@ function loadSnow() {
 	if (load("snow-state") != null) {
 		if (load("snow-state") == "1") {
 			snowStorm.resume();
-			document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_off.png";
 		} else {
 			snowStorm.freeze();
-			document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_on.png";
 		}
 	} else {
 		save("snow-state", "0");
 		snowStorm.freeze();
-		document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_on.png";
 	}
 }
 
@@ -109,10 +106,8 @@ function toggleSnow() {
 	} else {
 		save("snow-state", "0");
 		snowStorm.freeze();
-		document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_on.png";
 	}
 }
-
 function setTheme(theme) {
 	save("theme", theme);
 }
