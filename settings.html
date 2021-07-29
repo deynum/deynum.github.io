@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Official Deynum Website</title>
+		<link id="mainCss" rel="stylesheet" href="css/dark_simplified.css">
+		<link id="loadercss" rel="stylesheet" href="css/loader.css">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Deynum Studio" />
+		<meta property="og:description" content="The official Deynum Studio website." />
+		<meta property="og:url" content="https://deynum.github.io/" />
+		<meta name="theme-color" content="#8A2CDC">
+		<link type="application/json+oembed" href="oembed.json"/>
+		<script src="js/snowstorm.js"></script>
+		<script>
+			snowStorm.flakesMaxActive = 1000;
+			snowStorm.followMouse = false;
+			snowStorm.freezeOnBlur = true;
+			snowStorm.snowCharacter = '•';
+		</script>
+	</head>
+	
+	<body>
+		<center>
+			<div id="load-wrapper">
+				<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+			</div>
+			<div id="content">
+				<section class="s_header">
+					<img id="logo_big" src="content/img/logo.png" />
+				</section>
+				<section class="s_header_buttons">
+					<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_home.png" onmousedown="link('index');"/>
+					<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_links.png" onmousedown="link('links');"/>
+					<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_rules.png" onmousedown="link('rules');" />
+				</section>
+				<section class="s_body_margin">
+					<img class="theme_header" src="content/img/buttons/snow/snow.png" /></br>
+					<div class="theme_button_wrapper">
+						<img class="theme_button" id="toggle_snow" onmousedown="toggleSnow()" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/buttons/snow/toggle_on.png" />
+					</div>
+					</br>
+					<img class="theme_header" src="content/img/themes/theme.png" /></br>
+					<div class="theme_button_wrapper">
+						<img class="theme_button" id="theme_dark_simplified" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/themes/dark_simplified.png" />
+						<img class="theme_button" id="theme_dark_beautified" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/themes/dark_beautified.png" />
+						<!--<img class="theme_button" id="theme_light_simplified" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/themes/light_simplified.png" />
+						<img class="theme_button" id="theme_light_beautified" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/themes/light_beautified.png" />-->
+					</div>
+				</section>
+			</div>
+		</center>
+	</body>
+</html>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+var baseloadtime = 400;
+
+function link(url) {
+	window.location.href = url;
+}
+function openurl(url) {
+	window.open(url);
+}
+function hoverButton(get, bool) {
+	get.src = (bool ? get.src.split(".png")[0] + "_active.png" : get.src.split("_active.png")[0] + ".png");
+}
+function hoverLink(get, bool) {
+	var child = get.firstElementChild;
+	child.src = (bool ? child.src.split(".png")[0] + "_active.png" : child.src.split("_active.png")[0] + ".png");
+}
+
+function loadSnow() {
+	if (load("snow-state") != null) {
+		if (load("snow-state") == "1") {
+			snowStorm.resume();
+			document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_off.png";
+		} else {
+			snowStorm.freeze();
+			document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_on.png";
+		}
+	} else {
+		save("snow-state", "0");
+		snowStorm.freeze();
+		document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_on.png";
+	}
+}
+
+function toggleSnow() {
+	if (load("snow-state") != null) {
+		save("snow-state", load("snow-state") == "0" ? "1" : "0");
+		window.location.reload();
+	} else {
+		save("snow-state", "0");
+		snowStorm.freeze();
+		document.getElementById("toggle_snow").src = "content/img/buttons/snow/toggle_on.png";
+	}
+}
+
+function loadThemeButtons() {
+	var theme = load("theme");
+	var dark_simplified = document.getElementById("theme_dark_simplified");
+	var dark_beautified = document.getElementById("theme_dark_beautified");
+	var light_simplified = document.getElementById("theme_light_simplified");
+	var light_beautified = document.getElementById("theme_light_beautified");
+	
+	dark_simplified.setAttribute("onmouseenter","hoverButton(this, true);");
+	dark_simplified.setAttribute("onmouseleave","hoverButton(this, false);");
+	dark_simplified.setAttribute("onclick","setTheme('" + dark_simplified.id.split("theme_")[1] + "')");
+	dark_simplified.src = "content/img/themes/"+dark_simplified.id.split("theme_")[1]+".png";
+	dark_simplified.className = "theme_button";
+	
+	dark_beautified.setAttribute("onmouseenter","hoverButton(this, true);");
+	dark_beautified.setAttribute("onmouseleave","hoverButton(this, false);");
+	dark_beautified.setAttribute("onclick","setTheme('" + dark_beautified.id.split("theme_")[1] + "')");
+	dark_beautified.src = "content/img/themes/"+dark_beautified.id.split("theme_")[1]+".png";
+	dark_beautified.className = "theme_button";
+	
+/*	light_simplified.setAttribute("onmouseenter","hoverButton(this, true);");
+	light_simplified.setAttribute("onmouseleave","hoverButton(this, false);");
+	light_simplified.setAttribute("onclick","setTheme('" + light_simplified.id.split("theme_")[1] + "')");
+	light_simplified.src = "content/img/themes/"+light_simplified.id.split("theme_")[1]+".png";
+	light_simplified.className = "theme_button";
+	
+	light_beautified.setAttribute("onmouseenter","hoverButton(this, true);");
+	light_beautified.setAttribute("onmouseleave","hoverButton(this, false);");
+	light_beautified.setAttribute("onclick","setTheme('" + light_beautified.id.split("theme_")[1] + "')");
+	light_beautified.src = "content/img/themes/"+light_beautified.id.split("theme_")[1]+".png";
+	light_beautified.className = "theme_button";
+*/
+	
+	var selected = document.getElementById("theme_"+theme);
+	selected.setAttribute("onmouseenter","");
+	selected.setAttribute("onmouseleave","");
+	selected.setAttribute("onclick","");
+	selected.src = "content/img/themes/"+theme+"_active.png";
+	selected.className = "theme_button active";
+}
+
+window.onload = function() {
+	loadTheme();
+	loadThemeButtons();
+	loadSnow();
+}
+function setTheme(theme) {
+	save("theme", theme);
+	window.location.reload();
+}
+function loadTheme() {
+	if (load("theme") != null) {
+		var theme = load("theme");
+	} else {
+		setTheme("dark_simplified");
+		var theme = load("theme");
+	}
+	
+	document.getElementById("mainCss").href = "css/" + load("theme") + ".css";
+}
+function save(type, value) {
+	window.localStorage.setItem(type, value);
+}
+function load(type) {
+	var value = window.localStorage.getItem(type);
+	return value;
+}
+
+setTimeout(function(){
+	setTimeout(function(){
+		document.getElementById('loadercss').href = "";
+		//document.body.scrollTop = 0;
+	}, 100);
+	document.getElementById('content').style.display = "block";
+}, baseloadtime);
+</script>

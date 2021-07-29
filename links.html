@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Official Deynum Website</title>
+		<link id="mainCss" rel="stylesheet" href="css/dark_simplified.css">
+		<link id="loadercss" rel="stylesheet" href="css/loader.css">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Deynum Studio" />
+		<meta property="og:description" content="The official Deynum Studio website." />
+		<meta property="og:url" content="https://deynum.github.io/" />
+		<meta name="theme-color" content="#8A2CDC">
+		<link type="application/json+oembed" href="oembed.json"/>
+		<script src="js/snowstorm.js"></script>
+		<script>
+			snowStorm.flakesMaxActive = 1000;
+			snowStorm.followMouse = false;
+			snowStorm.freezeOnBlur = true;
+			snowStorm.snowCharacter = '•';
+		</script>
+	</head>
+	
+	<body>
+		<center>
+			<div id="load-wrapper">
+				<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+			</div>
+			<div id="content">
+				<section class="s_header">
+					<img id="logo_big" src="content/img/logo.png" />
+				</section>
+				<section class="s_header_buttons">
+					<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_home.png" onmousedown="link('index');"/>
+					<img class="s_header_button active" src="content/img/btn_links_active.png" />
+					<img class="s_header_button" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/btn_rules.png" onmousedown="link('rules');" />
+				</section>
+				<img class="s_header_button settings" onmouseenter="hoverButton(this, true);" onmouseleave="hoverButton(this, false);" src="content/img/cogwheel.png" onmousedown="settings();"/>
+				<section class="s_body_margin">
+					<div class="link_button_wrapper">
+						<div class="link_button" onmouseenter="hoverLink(this, true);" onmouseleave="hoverLink(this, false);" onclick="openurl('https://www.youtube.com/channel/UCliACYjYqDt7yqSXKo4f4fQ');" title="Deynum Studio on Youtube">
+							<img src="content/img/buttons/youtube/main.png" />
+						</div>
+						<div class="link_button" onmouseenter="hoverLink(this, true);" onmouseleave="hoverLink(this, false);" onclick="openurl('https://www.youtube.com/channel/UCrGCua5w8j9Kp_1SEGdKfLQ');" title="Deynum Gaming on Youtube">
+							<img src="content/img/buttons/youtube/game.png" />
+						</div>
+						<div class="link_button" onmouseenter="hoverLink(this, true);" onmouseleave="hoverLink(this, false);" onclick="openurl('https://discord.gg/Xh7zUHjA7J');" title="The Deynum Studio on Discord">
+							<img src="content/img/btn_discord.png" />
+						</div>
+						<div class="link_button" onmouseenter="hoverLink(this, true);" onmouseleave="hoverLink(this, false);" onclick="openurl('https://www.twitch.tv/deynum');" title="Deynum on Twitch">
+							<img src="content/img/buttons/twitch/main.png" />
+						</div>
+						<div class="link_button" onmouseenter="hoverLink(this, true);" onmouseleave="hoverLink(this, false);" onclick="openurl('https://deynum.itch.io/');" title="Deynum on Itch.io">
+							<img src="content/img/buttons/itch.io/main.png" />
+						</div>
+						<div class="link_button donate" onmouseenter="hoverLink(this, true);" onmouseleave="hoverLink(this, false);" onclick="openurl('https://streamlabs.com/deynumstudio/tip');" title="Streamlabs">
+							<img src="content/img/buttons/donate/main.png" />
+						</div>
+					</div>
+				</section>
+			</div>
+		</center>
+	</body>
+</html>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+var baseloadtime = 400;
+
+function link(url) {
+	window.location.href = url;
+}
+function openurl(url) {
+	window.open(url);
+}
+
+function settings() {
+	link('settings');
+}
+
+function hoverButton(get, bool) {
+	get.src = (bool ? get.src.split(".png")[0] + "_active.png" : get.src.split("_active.png")[0] + ".png");
+}
+function hoverLink(get, bool) {
+	var child = get.firstElementChild;
+	child.src = (bool ? child.src.split(".png")[0] + "_active.png" : child.src.split("_active.png")[0] + ".png");
+}
+
+window.onload = function() {
+	loadTheme();
+	loadSnow();
+}
+
+function loadSnow() {
+	if (load("snow-state") != null) {
+		if (load("snow-state") == "1") {
+			snowStorm.resume();
+		} else {
+			snowStorm.freeze();
+		}
+	} else {
+		save("snow-state", "0");
+		snowStorm.freeze();
+	}
+}
+
+function toggleSnow() {
+	if (load("snow-state") != null) {
+		save("snow-state", load("snow-state") == "0" ? "1" : "0");
+		window.location.reload();
+	} else {
+		save("snow-state", "0");
+		snowStorm.freeze();
+	}
+}
+function setTheme(theme) {
+	save("theme", theme);
+}
+function loadTheme() {
+	if (load("theme") != null) {
+		var theme = load("theme");
+	} else {
+		setTheme("dark_simplified");
+		var theme = load("theme");
+	}
+	
+	document.getElementById("mainCss").href = "css/" + load("theme") + ".css";
+}
+function save(type, value) {
+	window.localStorage.setItem(type, value);
+}
+function load(type) {
+	var value = window.localStorage.getItem(type);
+	return value;
+}
+
+setTimeout(function(){
+	setTimeout(function(){
+		document.getElementById('loadercss').href = "";
+		//document.body.scrollTop = 0;
+	}, 100);
+	document.getElementById('content').style.display = "block";
+}, baseloadtime);
+</script>
